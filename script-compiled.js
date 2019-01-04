@@ -10,8 +10,8 @@ console.log(greet + ' ' + who);
 // task 2 
 
 var multiply = function multiply(a) {
-     var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-     return a * b;
+    var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    return a * b;
 };
 
 console.log(multiply(2, 5));
@@ -20,20 +20,16 @@ console.log(multiply(5));
 // task 3 
 
 var average = function average() {
-     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-          args[_key] = arguments[_key];
-     }
+    for (var _len = arguments.length, items = Array(_len), _key = 0; _key < _len; _key++) {
+        items[_key] = arguments[_key];
+    }
 
-     return getAverage(args);
+    var sum = 0;
+    items.forEach(function (item) {
+        return sum += item;
+    });
+    return sum / items.length;
 };
-
-function getAverage(items) {
-     var sum = 0;
-     items.forEach(function (item) {
-          return sum += item;
-     });
-     return sum / items.length;
-}
 
 console.log(average(1)); // 1
 console.log(average(1, 3)); // 2
@@ -42,10 +38,13 @@ console.log(average(1, 3, 6, 6)); // 4
 // task 4 
 
 var grades = [1, 5, 5, 5, 4, 3, 3, 2, 1];
-var grads = grades.slice(0);
 
-var gradesAverage = function gradesAverage() {
-     return getAverage(grades);
+var gradesAverage = function gradesAverage(grades) {
+    var sum = 0;
+    grades.forEach(function (grad) {
+        return sum += grad;
+    });
+    return sum / grades.length;
 };
 
 console.log(gradesAverage(grades));
